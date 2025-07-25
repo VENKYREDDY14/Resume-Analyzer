@@ -17,45 +17,42 @@ This is a full-stack web application that allows users to upload their resumes (
 ---
 
 ## 📁 Project Structure
-
 resume-analyzer/
 ├── backend/
-│   ├── controllers/
-│   │   └── resumeController.js
-│   ├── db/
-│   │   ├── index.js
-│   │   └── config.js          
-│   ├── middleware/
-│   │   └── multer.js
-│   ├── models/
-│   │   └── Resume.js
-│   ├── routes/
-│   │   └── resumeRoutes.js
-│   ├── services/
-│   │   └── analysisService.js
-│   ├── .env                    
-│   ├── package.json
-│   └── server.js
+│ ├── controllers/
+│ │ └── resumeController.js
+│ ├── db/
+│ │ ├── index.js
+│ │ └── config.js
+│ ├── middleware/
+│ │ └── multer.js
+│ ├── models/
+│ │ └── Resume.js
+│ ├── routes/
+│ │ └── resumeRoutes.js
+│ ├── services/
+│ │ └── analysisService.js
+│ ├── .env
+│ ├── package.json
+│ └── server.js
 ├── frontend/
-│   ├── public/
-│   ├── screenshots/
-│   ├── package.json
-│   ├── .env
-│   └── src/
-│       ├── App.js
-│       ├── components/
-│       │   ├── Navbar.js
-│       │   ├── ResumeUploader.js
-│       │   ├── ResumeAnalysis.js
-│       │   └── PastResumesTable.js
-│       ├── context/
-│       │   └── TabContext.js
-│       └── pages/
-│           ├── ResumeAnalysis.js
-│           └── ResumeHistory.js
-├── README.md
-
-
+│ ├── public/
+│ ├── screenshots/
+│ ├── package.json
+│ ├── .env
+│ └── src/
+│ ├── App.js
+│ ├── components/
+│ │ ├── Navbar.js
+│ │ ├── ResumeUploader.js
+│ │ ├── ResumeAnalysis.js
+│ │ └── PastResumesTable.js
+│ ├── context/
+│ │ └── TabContext.js
+│ └── pages/
+│ ├── ResumeAnalysis.js
+│ └── ResumeHistory.js
+└── README.md
 
 
 ---
