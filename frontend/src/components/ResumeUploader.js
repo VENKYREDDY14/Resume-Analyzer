@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { ClipLoader } from 'react-spinners';
 import ResumeAnalysisDetails from './ResumeAnalysisDetails';
 
-const MAX_FILE_SIZE_MB =5;
+const MAX_FILE_SIZE_MB = 5;
 
 const ResumeUploader = () => {
   const [file, setFile] = useState(null);
@@ -13,10 +13,7 @@ const ResumeUploader = () => {
 
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
-
-    if (!selectedFile) {
-      return;
-    }
+    if (!selectedFile) return;
 
     const isPdf = selectedFile.type === 'application/pdf';
     const isWithinLimit = selectedFile.size <= MAX_FILE_SIZE_MB * 1024 * 1024;
@@ -55,9 +52,7 @@ const ResumeUploader = () => {
         `${process.env.REACT_APP_BACKEND_URL}/api/resumes/upload`,
         formData,
         {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
+          headers: { 'Content-Type': 'multipart/form-data' },
         }
       );
 
@@ -81,10 +76,10 @@ const ResumeUploader = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl mx-auto p-6">
-      <div className="bg-gray-300 p-6 rounded shadow">
+    <form onSubmit={handleSubmit} className="space-y-6 w-full p-4 sm:p-6 md:max-w-4xl md:mx-auto">
+      <div className="bg-gray-300 p-6 rounded shadow w-full">
         <h2 className="text-xl font-semibold mb-4 text-[#2584C6]">Upload Resume</h2>
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0">
           <input
             type="file"
             onChange={handleFileChange}
@@ -93,7 +88,7 @@ const ResumeUploader = () => {
           />
           <button
             type="submit"
-            className="bg-[#2584C6] text-white px-4 py-2 rounded hover:bg-cyan-600 flex items-center space-x-2 disabled:opacity-50"
+            className="bg-[#2584C6] text-white px-4 py-2 rounded hover:bg-cyan-600 flex items-center justify-center space-x-2 disabled:opacity-50 w-full sm:w-auto"
             disabled={loading}
           >
             {loading && <ClipLoader size={18} color="#fff" />}
@@ -103,7 +98,7 @@ const ResumeUploader = () => {
       </div>
 
       {response && (
-        <div className="bg-white shadow p-6 rounded-lg">
+        <div className="bg-white shadow p-6 rounded-lg w-full">
           <h3 className="text-xl font-bold text-[#2584C6] mb-4">Resume Analysis</h3>
           <ResumeAnalysisDetails resume={response} />
         </div>

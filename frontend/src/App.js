@@ -9,9 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
   return (
     <div className="min-h-screen bg-gray-100 justify-text font-roboto">
-      <ToastContainer position="top-right" autoClose={4000} />
       <Navbar />
-      <main className="p-6 pt-20">
+      <ToastContainer/>
+      <main className="pt-20">
+ 
         <Routes>
           <Route path="/" element={<Navigate to="/upload" />} />
           <Route path="/upload" element={<ResumeAnalysis />} />
