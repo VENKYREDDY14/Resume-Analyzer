@@ -17,7 +17,7 @@ This is a full-stack web application that allows users to upload their resumes (
 ---
 
 ## 📁 Project Structure
-'''
+```
 resume-analyzer/
 ├── backend/
 │   ├── controllers/
@@ -54,7 +54,7 @@ resume-analyzer/
 │           ├── ResumeAnalysis.js
 │           └── ResumeHistory.js
 └── README.md
-'''
+```
 
 
 ---
