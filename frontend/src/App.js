@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import ResumeAnalysis from './pages/ResumeAnalysis';
+import ResumeHistory from './pages/ResumeHIstory';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen bg-gray-100 justify-text font-roboto">
+      <ToastContainer position="top-right" autoClose={4000} />
+      <Navbar />
+      <main className="p-6 pt-20">
+        <Routes>
+          <Route path="/" element={<Navigate to="/upload" />} />
+          <Route path="/upload" element={<ResumeAnalysis />} />
+          <Route path="/history" element={<ResumeHistory />} />
+        </Routes>
+      </main>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# Resume Analyzer with Gemini AI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a full-stack web application that allows users to upload their resumes (PDF format, max size 5MB) and get them analyzed using **Gemini AI**. The app validates file uploads on both frontend and backend, supports single/multi-row resumes, and provides a user-friendly interface with toast notifications.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌟 Features
 
-### `npm start`
+- Upload PDF resumes (max 5MB)
+- Gemini AI integration for resume analysis
+- React frontend with real-time toast notifications
+- Backend using Node.js and Express
+- File validation with Multer middleware
+- Clear error handling for invalid files
+- Responsive and easy-to-use UI
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📁 Project Structure
 
-### `npm test`
+resume-analyzer/
+├── backend/
+│   ├── routes/resumeRoutes.js
+│   ├── controllers/resumeController.js
+│   ├── middleware/multer.js
+│   ├── services/analysisService.js
+│   ├── db/index.js
+│   └── server.js
+├── frontend/
+│   ├── src/
+│   │   ├── App.js
+│   │   ├── components/
+│   │   │   ├── Navbar.js
+│   │   │   ├── ResumeUploader.js
+│   │   │   ├── ResumeAnalysis.js
+│   │   │   └── PastResumesTable.js
+│   │   ├── pages/
+│   │   │   ├── ResumeAnalysis.js
+│   │   │   └── ResumeHistory.js
+│   │   └── context/TabContext.js
+│   ├── public/
+│   ├── package.json
+│   └── screenshots/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerequisites
 
-### `npm run eject`
+- Node.js (v16+)
+- npm or yarn
+- A Gemini AI API key
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🔧 Setup Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 1. Clone the Repository
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+git clone https://github.com/VENKYREDDY14/Resume-Analyzer.git
+cd Resume-Analyzer
 
-## Learn More
+2. Setup Backend
+cd backend
+npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Create a .env file in /backend with:
+PORT=5000
+DB_USER=postgres
+DB_HOST=localhost
+DB_PASSWORD=Reddy@****
+DB_PORT=5432
+DB_DATABASE=resume_db
+GEMINI_API_KEY=AIzaSyBVukwY-a7hsLXOe*****
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Start the backend server:
+npm start
 
-### Code Splitting
+3. Setup Frontend
+cd ../frontend
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Create a .env file in /frontend with:
+REACT_APP_BACKEND_URL
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Start the frontend development server:
+npm start
 
-### Making a Progressive Web App
+Gemini AI Integration
+The backend integrates with the Gemini AI API.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Uploaded PDF resumes are parsed and the extracted text is sent to Gemini.
 
-### Advanced Configuration
+Gemini analyzes the content and returns insights, which are displayed in the frontend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+File Upload Rules
+Only .pdf files are allowed
 
-### Deployment
+Max file size: 5 MB
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Invalid file uploads are blocked with meaningful error messages
 
-### `npm run build` fails to minify
+Screenshots
+### Upload Resume Page
+![Upload Page](./frontend/screenshots/Screenshot from 2025-07-25 14-28-01.png/)
+![Upload Page](./frontend/screenshots/Screenshot from 2025-07-25 14-28-30.png/)
+![Upload Page](./frontend/screenshots/Screenshot from 2025-07-25 14-28-58.png/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Resume Analysis Result
+![Result Page](./frontend/screenshots/Screenshot from 2025-07-25 14-29-01.png/)
+![Result Page](./frontend/screenshots/Screenshot from 2025-07-25 14-29-07.png/)
