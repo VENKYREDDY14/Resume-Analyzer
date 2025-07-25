@@ -20,27 +20,41 @@ This is a full-stack web application that allows users to upload their resumes (
 
 resume-analyzer/
 ├── backend/
-│   ├── routes/resumeRoutes.js
-│   ├── controllers/resumeController.js
-│   ├── middleware/multer.js
-│   ├── services/analysisService.js
-│   ├── db/index.js
+│   ├── controllers/
+│   │   └── resumeController.js
+│   ├── db/
+│   │   ├── index.js
+│   │   └── config.js          
+│   ├── middleware/
+│   │   └── multer.js
+│   ├── models/
+│   │   └── Resume.js
+│   ├── routes/
+│   │   └── resumeRoutes.js
+│   ├── services/
+│   │   └── analysisService.js
+│   ├── .env                    
+│   ├── package.json
 │   └── server.js
 ├── frontend/
-│   ├── src/
-│   │   ├── App.js
-│   │   ├── components/
-│   │   │   ├── Navbar.js
-│   │   │   ├── ResumeUploader.js
-│   │   │   ├── ResumeAnalysis.js
-│   │   │   └── PastResumesTable.js
-│   │   ├── pages/
-│   │   │   ├── ResumeAnalysis.js
-│   │   │   └── ResumeHistory.js
-│   │   └── context/TabContext.js
 │   ├── public/
+│   ├── screenshots/
 │   ├── package.json
-│   └── screenshots/
+│   ├── .env
+│   └── src/
+│       ├── App.js
+│       ├── components/
+│       │   ├── Navbar.js
+│       │   ├── ResumeUploader.js
+│       │   ├── ResumeAnalysis.js
+│       │   └── PastResumesTable.js
+│       ├── context/
+│       │   └── TabContext.js
+│       └── pages/
+│           ├── ResumeAnalysis.js
+│           └── ResumeHistory.js
+├── README.md
+
 
 
 
@@ -114,3 +128,6 @@ Screenshots
 ### Resume Analysis Result
 ![Result Page](./frontend/screenshots/Screenshot from 2025-07-25 14-29-01.png/)
 ![Result Page](./frontend/screenshots/Screenshot from 2025-07-25 14-29-07.png/)
+
+Live URL:
+https://resume-analyzer-nine-rosy.vercel.app/
