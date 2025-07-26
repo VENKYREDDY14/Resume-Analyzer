@@ -52,8 +52,10 @@ resume-analyzer/
 │       │   └── TabContext.js
 │       └── pages/
 │           ├── ResumeAnalysis.js
-│           └── ResumeHistory.js
+│           ├── ResumeHistory.js
+│           └── NotFound.js
 └── README.md
+
 ```
 
 
