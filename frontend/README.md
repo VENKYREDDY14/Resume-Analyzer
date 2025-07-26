@@ -131,3 +131,4 @@ Screenshots
 
 Live URL:
 https://resume-analyzer-nine-rosy.vercel.app/
+

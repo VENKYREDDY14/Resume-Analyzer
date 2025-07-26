@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ResumeAnalysis from './pages/ResumeAnalysis';
 import ResumeHistory from './pages/ResumeHIstory';
+import NotFound from './pages/NotFound';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" element={<Navigate to="/upload" />} />
           <Route path="/upload" element={<ResumeAnalysis />} />
           <Route path="/history" element={<ResumeHistory />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
