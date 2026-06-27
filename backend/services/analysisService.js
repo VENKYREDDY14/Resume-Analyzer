@@ -1,6 +1,6 @@
-import pdfParse from 'pdf-parse';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import dotenv from 'dotenv';
+import pdfParse from "pdf-parse";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ export const analyzeResume = async (fileBuffer) => {
     const { text } = await pdfParse(fileBuffer);
     resumeText = text;
   } catch (pdfError) {
-    throw new Error('Failed to parse PDF. It may be encrypted or corrupt.');
+    throw new Error("Failed to parse PDF. It may be encrypted or corrupt.");
   }
 
   const prompt = `
@@ -49,12 +49,23 @@ Return the response using this JSON structure only:
 `;
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.5-flash",
+    });
+
     const result = await model.generateContent(prompt);
+    if (!result.response) {
+      throw new Error("Gemini API returned no response.");
+    }
+
     const textResponse = await result.response.text();
-    const cleaned = textResponse.trim().replace(/^```json/, '').replace(/```$/, '');
+
+    const cleaned = textResponse
+      .trim()
+      .replace(/^```json/, "")
+      .replace(/```$/, "");
     return JSON.parse(cleaned);
   } catch (error) {
-    throw new Error('Failed to analyze the resume.');
+    throw new Error("Failed to analyze the resume.");
   }
 };

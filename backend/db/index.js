@@ -1,12 +1,9 @@
-import sequelize from './database.js';
-import Resume from '../models/Resume.js';
+import connectDB from './database.js';
 
 const initDB = async () => {
   try {
-    await sequelize.authenticate();
-    console.log('Database connection established');
-    await sequelize.sync();
-    console.log('Tables synced');
+    await connectDB();
+    console.log('Database initialized');
   } catch (err) {
     console.error('Error initializing DB:', err);
   }

@@ -1,82 +1,76 @@
-import { DataTypes } from 'sequelize';
-import sequelize from '../db/database.js';
+import mongoose from "mongoose";
 
-const Resume = sequelize.define('Resume', {
-  file_name: {
-    type: DataTypes.STRING(255),
-    allowNull: false,
+const resumeSchema = new mongoose.Schema(
+  {
+    file_name: {
+      type: String,
+      required: true,
+    },
+
+    name: String,
+
+    email: {
+      type: String,
+      lowercase: true,
+      match: [/^\S+@\S+\.\S+$/, "Invalid email"],
+      index: true,
+    },
+
+    phone: String,
+
+    linkedin_url: String,
+    portfolio_url: String,
+
+    summary: String,
+
+    work_experience: [
+      {
+        company: String,
+        role: String,
+        start_date: Date,
+        end_date: Date,
+        description: [String],
+      },
+    ],
+
+    education: [
+      {
+        institution: String,
+        degree: String,
+        year: String,
+      },
+    ],
+
+    technical_skills: [String],
+    soft_skills: [String],
+
+    projects: [
+      {
+        name: String,
+        description: String,
+        tech_stack: [String],
+      },
+    ],
+
+    certifications: [String],
+    achievements: [String],
+
+    resume_rating: {
+      type: Number,
+      min: 0,
+      max: 100,
+    },
+
+    improvement_areas: String,
+
+    upskill_suggestions: [String],
   },
-  uploaded_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+  {
+    collection: "resumes",
+    timestamps: true,
   },
-  name: {
-    type: DataTypes.STRING(255),
-    allowNull: true,
-  },
-  email: {
-    type: DataTypes.STRING(255),
-    allowNull: true,
-  },
-  phone: {
-    type: DataTypes.STRING(50),
-    allowNull: true,
-  },
-  linkedin_url: {
-    type: DataTypes.STRING(255),
-    allowNull: true,
-  },
-  portfolio_url: {
-    type: DataTypes.STRING(255),
-    allowNull: true,
-  },
-  summary: {
-    type: DataTypes.TEXT,
-    allowNull: true,
-  },
-  work_experience: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  },
-  education: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  },
-  technical_skills: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  },
-  soft_skills: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  },
-  projects: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  },
-  certifications: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  },
-  achievements: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  },
-  resume_rating: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-  },
-  improvement_areas: {
-    type: DataTypes.TEXT,
-    allowNull: true,
-  },
-  upskill_suggestions: {
-    type: DataTypes.JSONB,
-    allowNull: true,
-  }
-}, {
-  tableName: 'resumes',
-  timestamps: false,
-});
+);
+
+const Resume = mongoose.models.Resume || mongoose.model("Resume", resumeSchema);
 
 export default Resume;
